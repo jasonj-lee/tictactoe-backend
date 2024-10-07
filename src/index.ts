@@ -2,12 +2,13 @@ import express, { type Express, type Request, type Response } from "express";
 import dotenv from "dotenv"; 
 import cors from "cors";
 import { userRouter } from "./routes/userRouter"; 
+import { connectDB } from "../config/database";
 
 dotenv.config();
+connectDB();
 
 const app: Express = express();
 const PORT = process.env.PORT || 3001;
-const URI = process.env.MONGO_URI; 
 
 const corsOptions = {
     origin: ['http://localhost:4200'], // Add your frontend origins here
@@ -23,7 +24,7 @@ app.use(express.urlencoded({ extended: true })); // Parses incoming requests wit
 
 app.use("/user", userRouter); 
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
     res.send("Server is up!");
 })
 
