@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { userRouter } from "./routes/userRouter"; 
 import { connectDB } from "../config/database";
+import { predictionRouter } from "./routes/predictionRouter";
 
 dotenv.config();
 connectDB();
@@ -23,6 +24,7 @@ app.use(express.json()); // Parses incoming JSON requests and uts the parsed dat
 app.use(express.urlencoded({ extended: true })); // Parses incoming requests with urlenconded payloads
 
 app.use("/user", userRouter); 
+app.use("/prediction", predictionRouter)
 
 app.get("/", (_req: Request, res: Response) => {
     res.send("Server is up!");
