@@ -1,3 +1,5 @@
 .env
 node_modules
-playground-1.mongodb.js
+Lib
+Scripts
+pyvenv.cfg 
