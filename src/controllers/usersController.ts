@@ -5,9 +5,12 @@ import { type Request, type Response } from "express";
 
 const createUser = async (req: Request, res: Response) => {
     try {
-        const { name, wins, gamesPlayed } = req.body; 
+        const { firebaseUid, name } = req.body; 
 
-        const newUser = new User({ ...req.body });
+        const newUser = new User({ 
+            firebaseUid: firebaseUid, 
+            name: name
+         });
         await newUser.save(); 
 
         return res.status(200).json(newUser); 
