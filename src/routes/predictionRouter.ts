@@ -1,12 +1,12 @@
 import express, { type Request, type Response } from "express";
 const {
-  getPrediction
+  generatePrediction
 } = require("../controllers/predictionController");
 
 const predictionRouter = express.Router(); 
 
-predictionRouter.get("/", (req: Request, res: Response) => {
-  getPrediction(req, res);
+predictionRouter.post("/", (req: Request, res: Response) => {
+  generatePrediction(req, res);
 });
 
 export { predictionRouter };

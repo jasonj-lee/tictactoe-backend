@@ -1,7 +1,7 @@
 import { type Request, type Response } from "express";
 import axios from "axios";
 
-const getPrediction = async (req: Request, res: Response) => {
+const generatePrediction = async (req: Request, res: Response) => {
     try {
         const gameState = req.body.gameState; 
         const response = await axios.post(`${process.env.AI_URL}/predict`, {
@@ -13,3 +13,5 @@ const getPrediction = async (req: Request, res: Response) => {
         res.status(500).send('Failed to get prediction');
     }
 }
+
+export { generatePrediction }
